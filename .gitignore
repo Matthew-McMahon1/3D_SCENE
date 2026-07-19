@@ -1,0 +1,19 @@
+# Ignore compiler build outputs
+/build/
+/out/
+*.exe
+*.obj
+*.o
+
+# Ignore hidden IDE folders
+/.vscode/
+/.vs/
+.DS_Store
+
+# Ignore external library binaries
+lib-vc/
+lib-vc2022/
+
+# Ignore downloaded external headers
+include/GLFW/
+include/glad/
