@@ -4,7 +4,7 @@
 #include "Math/Vector3.h"
 #include "Math/Matrix4x4.h"
 #include "Graphics/Camera.h"
-#include "Objects/SpinningCube.h"
+#include "Objects/Cube/SpinningCube.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;

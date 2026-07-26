@@ -1,12 +1,9 @@
 #pragma once
-#include "GameObject.h"
+#include "../GameObject.h"
 
-class SpinningCube : public GameObject {
+class Cube : public GameObject {
 public:
-    float spinSpeedX = 0.6f;
-    float spinSpeedY = 0.3f;
-
-    SpinningCube() {
+    Cube() {
         // 8 Corners of a unit cube
         vertices = {
             {-1.0f, -1.0f, -1.0f}, { 1.0f, -1.0f, -1.0f}, { 1.0f,  1.0f, -1.0f}, {-1.0f,  1.0f, -1.0f},
@@ -19,10 +16,5 @@ public:
             {4, 5}, {5, 6}, {6, 7}, {7, 4}, // Front face
             {0, 4}, {1, 5}, {2, 6}, {3, 7}  // Connecting edges
         };
-    }
-
-    void Update(float deltaTime) override {
-        rotation.x += spinSpeedX * deltaTime;
-        rotation.y += spinSpeedY * deltaTime;
     }
 };
