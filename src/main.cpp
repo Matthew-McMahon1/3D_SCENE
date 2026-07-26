@@ -5,6 +5,7 @@
 #include "Math/Matrix4x4.h"
 #include "Graphics/Camera.h"
 #include "Objects/Cube/SpinningCube.h"
+#include "Objects/Cube/BouncingCube.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -45,11 +46,9 @@ int main() {
     leftCube->position = { -2.0f, 0.0f, -6.0f };
     sceneObjects.push_back(std::move(leftCube));
 
-    // Create Right Cube (Fast Spin)
-    auto rightCube = std::make_unique<SpinningCube>();
+    // Create Right Cube (Standard Bounce)
+    auto rightCube = std::make_unique<BouncingCube>();
     rightCube->position = { 2.0f, 0.0f, -6.0f };
-    rightCube->spinSpeedX = 1.5f;
-    rightCube->spinSpeedY = 1.0f;
     sceneObjects.push_back(std::move(rightCube));
 
     float lastFrameTime = static_cast<float>(glfwGetTime());
