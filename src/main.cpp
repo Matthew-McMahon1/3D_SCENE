@@ -60,6 +60,20 @@ int main() {
         float deltaTime = currentFrameTime - lastFrameTime;
         lastFrameTime = currentFrameTime;
 
+        // 2. Handle Resizing Dynamically
+        int displayW, displayH;
+        glfwGetFramebufferSize(window, &displayW, &displayH);
+
+        // Prevent division by zero when window is minimized
+        if (displayH > 0) {
+            // Tell OpenGL to render to the entire new framebuffer area
+            glViewport(0, 0, displayW, displayH);
+
+            // Keep correct aspect ratio on camera
+            float currentAspect = static_cast<float>(displayW) / static_cast<float>(displayH);
+            camera.aspectRatio = currentAspect;
+        }
+
         // 2. Clear Frame
         glClearColor(0.12f, 0.14f, 0.18f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
