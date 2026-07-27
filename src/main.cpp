@@ -11,15 +11,18 @@ const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
 
 void DrawObjectWireframe(const GameObject& obj, const Matrix4x4& mvp) {
-    glBegin(GL_LINES);
-    glColor3f(0.2f, 0.8f, 1.0f); // Cyan wireframe lines
+    glBegin(GL_TRIANGLES);
+    glColor3f(0.2f, 0.8f, 1.0f); // Cyan faces
 
-    for (const auto& edge : obj.indices) {
-        Vector3 v1 = mvp.Transform(obj.vertices[edge.first]);
-        Vector3 v2 = mvp.Transform(obj.vertices[edge.second]);
+    for (const auto& tri : obj.indices) {
+        // Transform vertices with MVP matrix
+        Vector3 v1 = mvp.Transform(obj.vertices[tri[0]]);
+        Vector3 v2 = mvp.Transform(obj.vertices[tri[1]]);
+        Vector3 v3 = mvp.Transform(obj.vertices[tri[2]]);
 
-        glVertex2f(v1.x, v1.y);
-        glVertex2f(v2.x, v2.y);
+        glVertex3f(v1.x, v1.y, v1.z);
+        glVertex3f(v2.x, v2.y, v2.z);
+        glVertex3f(v3.x, v3.y, v3.z);
     }
     glEnd();
 }
